@@ -1,0 +1,26 @@
+# Web Framework
+Flask==3.0.0
+gunicorn
+
+# Data Processing
+pandas
+numpy
+
+# Machine Learning & Analysis
+scikit-learn==1.3.2
+scipy
+
+# Data Visualization
+matplotlib
+seaborn
+plotly
+dash
+dash-bootstrap-components
+
+# Backend Utilities
+Jinja2
+Flask-WTF
+wtforms
+
+# Deployment & Database (if needed)
+psycopg2-binary  # Only if using PostgreSQL
