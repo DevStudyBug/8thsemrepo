@@ -1,0 +1,963 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Spicy+Rice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    text-decoration: none;
+    outline: none;
+    cursor: none;
+    font-weight: 400;
+    box-sizing: border-box;
+    font-family: var(--main-font);
+}
+
+:root {
+    --ternary-color:  #2563EB;
+    /* --main-color: #0522da; */
+    --main-color:  #2563EB;
+    --body-color: #ffffff;
+    --secondary-color:  #2563EB;
+    --background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 87% at 26% 20%, rgba(255, 255, 255, 0.41) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+    --main-font: "Afacad Flux", sans-serif;
+    --heading-font: "Afacad Flux", sans-serif;
+    --curly-font: "Afacad Flux", sans-serif;
+    --box-shadow: 0 0px 7px rgba(196, 198, 255, 0.7);
+}
+
+body {
+    background-color: var(--body-color);
+    /* cursor: url("../images/logo.png"), auto; */
+    cursor: url("../images/recuLogo.jpg"),auto;
+}
+
+/* ---------------------- */
+
+/* Preloader Styles */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--body-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+
+.loader-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+.flavor-circle {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    opacity: 0;
+    animation: fade 1.6s infinite ease-in-out;
+}
+
+@keyframes fade {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Positioning the circles in a perfect circle using trigonometry */
+.flavor-circle:nth-child(1) {
+    background-color: #31499e;
+    /* Chocolate */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg) translate(60px) rotate(0deg);
+    animation-delay: 0s;
+}
+
+.flavor-circle:nth-child(2) {
+    background-color: #9f97f6;
+    /* Strawberry */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg) translate(60px) rotate(-45deg);
+    animation-delay: 0.2s;
+}
+
+.flavor-circle:nth-child(3) {
+    background-color: #9bdaf9;
+    /* Vanilla */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg) translate(60px) rotate(-90deg);
+    animation-delay: 0.4s;
+}
+
+.flavor-circle:nth-child(4) {
+    background-color: #90f5fb;
+    /* Mint */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(135deg) translate(60px) rotate(-135deg);
+    animation-delay: 0.6s;
+}
+
+.flavor-circle:nth-child(5) {
+    background-color: #64c6ed;
+    /* Blueberry */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(180deg) translate(60px) rotate(-180deg);
+    animation-delay: 0.8s;
+}
+
+.flavor-circle:nth-child(6) {
+    background-color: #47ddff;
+    /* Mango */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(225deg) translate(60px) rotate(-225deg);
+    animation-delay: 1s;
+}
+
+.flavor-circle:nth-child(7) {
+    background-color: #72b7c5;
+    /* Pistachio */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(270deg) translate(60px) rotate(-270deg);
+    animation-delay: 1.2s;
+}
+
+.flavor-circle:nth-child(8) {
+    background-color: #0b7be3;
+    /* Raspberry */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(315deg) translate(60px) rotate(-315deg);
+    animation-delay: 1.4s;
+}
+
+
+/* Transition for Loaded State */
+body.loaded #preloader {
+    display: none;
+}
+
+body.loaded #main-content {
+    display: block;
+}
+
+/* ---------------------- */
+::selection {
+    background-color: var(--main-color);
+    color: var(--body-color);
+}
+
+html {
+    scroll-padding-top: 70px;
+    scroll-behavior: smooth;
+}
+
+button,
+input[type="submit"] {
+    background-image: var(--background-image);
+    font-size: 16px;
+    padding: 8px 30px;
+    margin-bottom: 15px;
+    background-color: var(--main-color);
+    border: 2px solid var(--main-color);
+    border-radius: 20px;
+    color: var(--body-color);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background-image: none;
+}
+
+button:active,
+input[type="submit"]:active {
+    transform: scale(0.95);
+}
+
+section {
+    width: 100%;
+    padding: 0 100px;
+    margin: 50px 0;
+}
+
+section>h1 {
+    font-size: 40px;
+    text-align: center;
+    color: var(--body-color);
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0 25px;
+    font-family: var(--heading-font);
+    clip-path: polygon(100% 0, 93% 50%, 100% 99%, 0% 100%, 7% 50%, 0% 0%);
+    background-color: var(--secondary-color);
+}
+
+.box-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+
+}
+
+.box {
+    cursor: pointer;
+    padding: 10px;
+}
+
+h3 {
+    text-align: center;
+    margin-top: -20px;
+}
+
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+::-webkit-scrollbar-track {
+    width: 0;
+}
+
+.design1,
+.design2,
+.design3 {
+    position: absolute;
+    z-index: -1;
+    height: 200px;
+    width: 200px;
+}
+
+/* -------------header styles------------------- */
+.nav-bar {
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: fit-content;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--body-color);
+    height: 70px;
+    padding: 0 100px;
+    box-shadow: 0 1.5px 1.5px var(--secondary-color);
+}
+
+.nav-bar .logo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+
+}
+
+.nav-bar .logo a {
+    font-size: 30px;
+    font-weight: 400;
+    color: var(--ternary-color);
+    font-family: var(--curly-font);
+}
+
+.nav-bar .nav-links {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+}
+
+.nav-bar .nav-links a {
+    display: inline-block;
+    line-height: 70px;
+    position: relative;
+    text-decoration: none;
+    color: var(--main-color);
+    font-size: 18px;
+    letter-spacing: 1.3px;
+    text-transform: capitalize;
+    margin: 0 15px;
+    padding: 0 8px;
+}
+
+.nav-bar .nav-links a:after {
+    content: "";
+    position: absolute;
+    background-color: var(--main-color);
+    border-radius: 10px;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -1.5px;
+    transition: 0.3s;
+    transform-origin: center;
+}
+
+.nav-bar .nav-links a:hover:after,
+.nav-bar .nav-links a.active:after {
+    width: 100%;
+
+}
+
+.nav-bar .icons {
+    display: flex;
+}
+
+.nav-bar .icons .icon {
+    padding: 0 5px;
+    position: relative;
+}
+
+.nav-bar .icons i {
+    font-size: 20px;
+    margin: 0 8px;
+    color: var(--main-color);
+    padding: 10px 0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-bar .icons i:hover {
+    color: var(--main-color);
+}
+
+.nav-bar .icons i.menu {
+    display: none;
+}
+
+.nav-bar .icons .no-of-cart-items,
+.no-of-wishlist-items {
+    position: absolute;
+    color: var(--main-color);
+    right: -15px;
+    width: 25px;
+    font-size: 12px;
+}
+
+
+/* avtar */
+.avatar-container {
+    position: relative;
+    cursor: pointer;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #3b82f6;
+}
+
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    top: 65px;
+    right: 0;
+    width: 300px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    padding: 15px;
+}
+
+.profile-dropdown.active {
+    display: block;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 10px;
+}
+
+.profile-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.profile-info h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.profile-info p {
+    margin: 5px 0 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.profile-actions {
+    margin-top: 10px;
+}
+
+.profile-actions a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.profile-actions a:hover {
+    background-color: #f3f4f6;
+}
+
+/* Cute Alert Styles */
+.cute-alert {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #e6f2ff;
+    border: 3px solid #3b82f6;
+    border-radius: 20px;
+    padding: 15px 30px;
+    text-align: center;
+    box-shadow: 0 8px 15px rgba(59, 130, 246, 0.3);
+    z-index: 1000;
+    display: none;
+    max-width: 300px;
+}
+
+.cute-alert-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cute-alert-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    animation: wave 1.5s infinite;
+}
+
+.cute-alert-text {
+    color: #1e3a8a;
+    font-weight: bold;
+}
+
+@keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-15deg); }
+    75% { transform: rotate(15deg); }
+}
+
+/* Confetti Styles */
+.confetti {
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    background-color: #3b82f6;
+    top: -10px;
+    opacity: 0;
+    z-index: 9999;
+}
+/* avtar  */
+/* cart styles */
+
+.cart {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 350px;
+    height: 100vh;
+    background-color: var(--body-color);
+    border-left: 2px solid grey;
+    padding: 10px;
+    z-index: 1000;
+    right: -100%;
+    transition: right 0.3s ease;
+}
+
+.cart.active {
+    right: 0;
+}
+
+.cart .no-empty-cart {
+    display: none;
+}
+
+.cart .no-empty-cart.active {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart ul li {
+    padding: 7px;
+    margin: 10px 0;
+    border: 2px solid var(--ternary-color);
+}
+
+.cart ul li img {
+    float: left;
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+}
+
+.cart ul li .text {
+    position: relative;
+    font-size: 13px;
+    line-height: 17px;
+}
+
+.cart ul li .text .price {
+    font-weight: 600;
+}
+
+.cart h1 {
+    font-size: 20px;
+    margin-top: 20px;
+    text-align: center;
+    color: var(--main-color);
+}
+
+.cart .total {
+    font-weight: 600;
+    padding: 10px;
+}
+
+.cart button {
+    margin: 10px auto;
+    width: 100%;
+}
+
+.cart .close-cart,
+.remove-cart-item-btn {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: var(--main-color);
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.cart .close-cart:hover,
+.remove-cart-item-btn:hover {
+    color: var(--ternary-color);
+}
+
+.cart ul li .text .remove-cart-item-btn {
+    font-size: 15px;
+    top: 0;
+    right: 0;
+}
+
+.cart .empty-cart {
+    display: none;
+}
+
+.cart .empty-cart p {
+    text-align: center;
+    padding-top: 25%;
+
+}
+
+.cart .empty-cart.active {
+    display: inline;
+}
+
+/* -------------footer styles------------------- */
+.footer {
+    background: var(--ternary-color);
+    margin: 0;
+    padding: 0;
+    background-image: url("../images/ppl.webp");
+    background-position: center;
+    background-size: cover;
+}
+
+.footer .footer-row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 3.5rem;
+    padding: 60px 100px;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.footer-row .footer-col h4 {
+    color: var(--body-color);
+    font-size: 1.3rem;
+    font-weight: 400;
+    font-family: var(--heading-font);
+}
+
+.footer-col .links {
+    margin-top: 20px;
+}
+
+.footer-col .links li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.footer-col .links li a {
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+
+.footer-col .links li a:hover {
+    color: var(--body-color);
+}
+
+.footer-col p {
+    margin: 20px 0;
+    color: var(--secondary-color);
+    max-width: 300px;
+}
+
+.footer-col form {
+    display: flex;
+    gap: 5px;
+}
+
+.footer-col button {
+    height: 40px;
+}
+
+.footer-col input {
+    height: 40px;
+    border-radius: 6px;
+    background: none;
+    width: 100%;
+    outline: none;
+    border: 1px solid var(--secondary-color);
+    caret-color: var(--body-color);
+    color: var(--body-color);
+    padding-left: 10px;
+}
+
+.footer-col input::placeholder {
+    color: #ccc;
+}
+
+.footer-col form button {
+    border: none;
+    border-radius: 6px;
+}
+
+.footer-col .icons {
+    display: flex;
+    margin-top: 30px;
+    gap: 30px;
+    cursor: pointer;
+}
+
+.footer-col .icons i {
+    color: var(--secondary-color);
+}
+
+.footer-col .icons i:hover {
+    color: #fff;
+}
+
+.footer-col .links li a.social:hover {
+    color: var(--body-color);
+    /* Default hover color */
+
+
+}
+
+.footer-col .links li a[href*="facebook.com"]:hover {
+    background: linear-gradient(to right, blue, white);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.footer-col .links li a[href*="instagram.com"]:hover {
+    color: red;
+}
+
+.footer-col .links li a[href*="linkedin.com"]:hover {
+    color: lightblue;
+}
+
+.footer-col .links li a[href*="twitter.com"]:hover {
+    color: #fffcfc;
+    text-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+}
+
+/* Whatsapp */
+.footer-col .links li a[href*="#1"]:hover {
+    background: linear-gradient(to right, rgba(0, 255, 0, 0.8), rgba(0, 0, 0, 0.2));
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/*Footer Css ends here  */
+
+.social {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.copyright {
+    background-color: var(--secondary-color);
+    width: 100%;
+    color: var(--body-color);
+    text-align: center;
+    border-top: 1px solid var(--secondary-color);
+    padding: 10px;
+
+}
+
+/* scroll bottom to top */
+.scroll-button {
+    position: fixed;
+    bottom: 4%;
+    right: 2%;
+    outline: none;
+    border: none;
+    border-radius: 100%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    user-select: none;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    -webkit-tap-highlight-color: transparent;
+    background-image: none;
+    background-color: transparent;
+    padding: 0;
+
+}
+
+.scroll-button:hover {
+    background-color: transparent;
+    transform: scale(1.1);
+}
+
+.scroll-button>img {
+    width: 50px;
+    height: 50px;
+}
+
+.show-btn {
+    opacity: 1 !important;
+    pointer-events: all !important;
+}
+
+/* Scroll Bar */
+
+::-webkit-scrollbar {
+    width: 0.8em;
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-color);
+    background-image: var(--background-image);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-image: none;
+}
+
+@supports (var(--main-color)) {
+    * {
+        scrollbar-color: var(--main-color);
+    }
+}
+
+/* Toaster styles */
+.toast-container {
+    position: fixed;
+    top: 50px;
+    margin: 0 10px;
+    right: 0;
+    z-index: 9999;
+}
+
+.toast {
+    background-color: var(--secondary-color);
+    color: var(--ternary-color);
+    padding: 16px;
+    border-radius: 5px;
+    font-weight: 600;
+    letter-spacing: 1.1px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    animation: slideIn 0.5s forwards, fadeOut 4s 3s forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/* Adding animation on what we do */
+@keyframes appearleft {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.leftani {
+    animation: appearleft linear;
+    animation-timeline: view();
+    animation-range: entry 0 cover 40%;
+}
+
+.rightani {
+    animation: appearright linear;
+    animation-timeline: view();
+    animation-range: entry 0 cover 40%;
+}
+
+
+@keyframes appearright {
+    from {
+        opacity: 0;
+        /* scale: 0.5; */
+        /* clip-path: insert(100% 100% 0 0); */
+        transform: translateX(-100px);
+    }
+
+    to {
+        opacity: 1;
+        /* scale:1; */
+        /* clip-path: insert(0 0 0 0); */
+        transform: translateX(0px);
+    }
+}
+
+
+@keyframes appearbottom {
+    from {
+        opacity: 0;
+        scale: 0.5;
+        /* clip-path: insert(100% 100% 0 0); */
+        /* transform: translateX(100px); */
+    }
+
+    to {
+        opacity: 1;
+        scale: 1;
+        /* clip-path: insert(0 0 0 0); */
+        /* transform: translateX(0px); */
+    }
+}
+
+.bottomani {
+    animation: appearbottom linear;
+    animation-timeline: view();
+    animation-range: entry 0 cover 40%;
+}
+
+/* gallery Section */
+
+.gallery-para {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.gallery-para p {
+    font-size: 1.4rem;
+}
+
+/* cursor */
+.circle {
+    height: 24px;
+    width: 24px;
+    border-radius: 24px;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99999999;
+    /* so that it stays on top of all other elements */
+}
+
+
+/*Added a close button(X)*/
+#close-btn2 {
+    position:absolute;
+    top:1;
+    right:0;
+    font-size: 30px;
+    width: 40px; 
+    height: 40px;
+    cursor: pointer;
+    padding: 2px;
+    border-radius: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    text-align: center;
+}
+/*Hovering effect on close button*/
+#close-btn2:hover {
+    transform: scale(1);
+    color: #ff69b4;
+    background-color: rgb(235, 192, 211); 
+}

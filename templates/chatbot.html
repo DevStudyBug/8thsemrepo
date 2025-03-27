@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- link to add favicon -->
+    <link rel="icon" href="./images/recuLogo.jpg" type="img">
+    <title>RecruitEase</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- custom style sheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/products.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/login-signup.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/topscrollindicator.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/subscriptions.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/dine-in.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/faq.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/gallery.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/terms.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/privacy.css')  }}">
+
+
+    <!-- img -->
+    <link rel="icon" src="{{ url_for('static', filename='images/recuLogo.jpg')  }}" type="image/png">
+    <!-- font awesome icons script -->
+    <script src="https://kit.fontawesome.com/c732ec9339.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<!-- cursor -->
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+
+ <!-- Scroll progress bar -->
+ <div class="scroll-progress" id="scrollProgress"></div>
+
+ <!-- nav bar -->
+ <div class="nav-bar">
+     <div class="logo">
+         <img src="{{ url_for('static', filename='images/recuLogo.jpg')  }}" alt="Image" height="40px" width="40px">
+         <a href="index.html">RecruitEase</a>
+     </div>
+     <div class="nav-links">
+         <a href="/index" class="link active">home</a>
+         <a class="nav-link" href="/job"><i class="bi bi-briefcase"></i> Recruitment</a>
+         <a class="nav-link" href="https://dashboard-9rnkcxapp3ykvqyp5jubqtn.streamlit.app/"><i class="bi bi-bar-chart"></i> Dashboard</a>
+         <a class="nav-link" href="https://resumebasedemo-5djptiauhsrqkmwupkvp4d.streamlit.app/"><i class="bi bi-line"></i> Resume Score</a>
+         <a href="/chatbot" class="nav-links"><i class="bi bi-box"></i>ChatBot</a>
+    </div>
+    <div class="avatar-container">
+        <img src="https://randomuser.me/api/portraits/women/47.jpg" 
+             alt="User Avatar" 
+             class="avatar" 
+             onclick="toggleProfileDropdown()">
+        
+        <div id="profileDropdown" class="profile-dropdown">
+            <div class="profile-header">
+                <img src="https://randomuser.me/api/portraits/women/47.jpg" 
+                     alt="Profile Avatar" 
+                     class="profile-avatar">
+                <div class="profile-info">
+                    <h3>My Profile </h3>
+                    <!-- <p>anshikadubey8591@gmail.com</p> -->
+                </div>
+            </div>
+            
+            <div class="profile-actions">
+                <!-- <a href="#" onclick="openProfile()">View Profile</a>
+                <a href="#" onclick="openSettings()">Account Settings</a> -->
+                <a href="#" onclick="logout()">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="cuteAlert" class="cute-alert">
+        <div class="cute-alert-content">
+            <span class="cute-alert-text">You’ve been logged out! 😇 Bye See you again soon!...
+        </div>
+    </div>
+</div>
+<!-- main -->
+<section class="chatbot-section" id="chatbot">
+    <div class="container py-5">
+        <!-- Main Heading Section - Similar to your image -->
+        <div class="text-center mb-5">
+            <h1 class="main-heading text-primary fw-bold">Get Help From Your Smart HR Assistant!</h1>
+            <p class="sub-heading text-muted">RecruitEase chatbot provides instant answers to HR queries, streamlines recruitment, and supports your team 24/7.</p>
+            <div class="mt-4">
+                <a href="/chatbot" class="btn btn-primary me-3">Try Chatbot Now</a>
+                <a href="#features" class="btn btn-outline-primary">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Chatbot Box Section -->
+        <div class="row align-items-center my-5">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="chat-preview p-4 bg-light rounded-lg shadow">
+                    <div class="chat-header d-flex align-items-center mb-4">
+                        <!-- <img src="images/chatbot.jpg" alt="HR Assistant Avatar" class="rounded-circle me-3" /> -->
+                        <div>
+                            <h5 class="mb-0">HR Assistant</h5>
+                           
+                        </div>
+                    </div>
+                    
+                    <!-- Chat Messages -->
+                    <div class="chat-messages">
+                      
+                        <div class="message-received mb-3 ">
+                            <div class="message-bubble p-2 bg-white rounded-pill ">
+                                <p class="mb-0">Hello! I'm your RecruitEase HR Assistant. How can I help you today?</p>
+                            </div>
+                            <div class="d-flex justify-content-center mt-2">
+                                <img src="https://csc.edu.vn/template/frontend/images/chatbot-animation.gif?v=1.1" 
+                                     alt="HR Assistant Avatar" width="27%" />
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="assistant-info">
+                    <h2 class="section-title mb-4">Your 24/7 HR Support Partner</h2>
+                    <p class="mb-4">Meet your AI-powered HR assistant that helps streamline your entire employee lifecycle - from recruitment to retirement.</p>
+                    
+                    <div class="features-list">
+                        <div class="feature-item d-flex align-items-start mb-3">
+                            <div class="feature-icon me-3 bg-primary bg-opacity-10 p-3 rounded-circle">
+                                <i class="bi bi-search text-primary fs-4"></i>
+                            </div>
+                            <div>
+                                <h5>Smart Candidate Matching</h5>
+                                <p>Find perfect candidates by matching job requirements with applicant skills automatically.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item d-flex align-items-start mb-3">
+                            <div class="feature-icon me-3 bg-primary bg-opacity-10 p-3 rounded-circle">
+                                <i class="bi bi-calendar-check text-primary fs-4"></i>
+                            </div>
+                            <div>
+                                <h5> Performance Analytics</h5>
+                                <p>Get real-time insights into employee performance with our interactive analytics dashboard.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item d-flex align-items-start">
+                            <div class="feature-icon me-3 bg-primary bg-opacity-10 p-3 rounded-circle">
+                                <i class="bi bi-graph-up text-primary fs-4"></i>
+                            </div>
+                            <div>
+                                <h5>Applicant tracking systems (ATS)</h5>
+                                <p>Automate the hiring process, screening resumes and managing job applications.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Why Choose Our HR Assistant -->
+        <div class="why-section mt-5 pt-5" id="features">
+            <h2 class="text-center mb-5">Why Choose RecruitEase HR Assistant?</h2>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-container d-flex align-items-center justify-content-center mx-auto mb-4">
+                                <i class="bi bi-lightning-charge-fill text-primary fs-2"></i>
+                            </div>
+                            <h4>Instant Responses</h4>
+                            <p>Get immediate answers to HR queries, reducing response time by 85% and improving employee satisfaction.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-container d-flex align-items-center justify-content-center mx-auto mb-4">
+                                <i class="bi bi-person-plus-fill text-primary fs-2"></i>
+                            </div>
+                            <h4>Seamless Onboarding</h4>
+                            <p>HR dashboard can help refine and optimize the onboarding process for maximum impact.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-container d-flex align-items-center justify-content-center mx-auto mb-4">
+                                <i class="bi bi-shield-check text-primary fs-2"></i>
+                            </div>
+                            <h4>Policy Compliance</h4>
+                            <p>Ensure HR processes follow company policies and regulatory requirements automatically.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="cta-section text-center mt-5 pt-3">
+            <div class="cta-box bg-primary text-white p-5 rounded-lg shadow">
+                <h3 class="mb-3">Ready to Transform Your HR Operations?</h3>
+                <!-- <h3 class="mb-3">Start using our AI-powered HR Assistant today and see the difference it makes in your workflow.</h3> -->
+                <a href="/chatbot" class="btn btn-light btn-lg">Get Started with HR Assistant</a>
+            </div>
+        </div>
+    </div>
+</section>
+ <!-- main end -->
+ <!-- footer -->
+ <section class="footer">
+    <div class="footer-row">
+        <div class="footer-col">
+            <h4>Useful links</h4>
+            <ul class="links">
+
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="./faq.html" class="link"> FAQ</a></li>
+                <li><a href="/privacy.html"> Privacy Policy</a></li>
+                <li><a href="/terms&condition.html">Terms&Condition</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Opening Hours</h4>
+            <ul class="links">
+                <li><a href="#">Mon-Sat : 9.00 AM to 9.30 PM</a></li>
+                <li><a href="#">Sunday : 9.00 AM to 3.00 PM</a></li>
+            </ul>
+            <h4 style="margin-top: 15px;">Locations</h4>
+            <ul class="links">
+                <li class="address1"><a href="" class="social"><i class="fa-solid fa-location-dot"></i> Mumbai, Maharastra</a></li>
+                <li class="address2"><a href="" class="social"><i class="fa-solid fa-location-dot"></i>Navi Mumbai,Thane </a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Need Help?</h4>
+            <ul class="links">
+                <li><a href="tel:90904500112" class="social"><i class="fa-solid fa-phone"></i> +91 8591245402</a>
+                </li>
+                <li><a href="tel:90904500112" class="social"><i class="fa-solid fa-phone"></i> +91 8591245402</a>
+                </li>
+                <li><a href="mailto:mail@1234567.com" class="social"><i class="fa-solid fa-envelope"></i>
+                        anshikadubey8591@gmail.com</a></li>
+            </ul>
+            <h4 style="margin-top: 15px;">Follow Us</h4>
+            <ul class="links">
+                <li><a href="https://www.facebook.com/" class="social"><i class="fa-brands fa-facebook-f"></i>
+                        Facebook</a></li>
+                <li><a href="https://www.instagram.com/" class="social"><i class="fa-brands fa-instagram"></i>
+                        Instagram</a></li>
+                <li><a href="https://www.linkedin.com/" class="social"><i class="fa-brands fa-linkedin-in"></i>
+                        Linkedin</a></li>
+                <li><a href="https://www.twitter.com/" class="social"><i class="fa-brands fa-x-twitter"></i>
+                        Twitter</a></li>
+                <li><a href="#1" class="social"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a></li>
+                <!-- It's href is #1 for css purpose to get it's hover green  -->
+
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Subscribe</h4>
+            <p>
+                Subscribe to our website for a weekly dose
+                of updates, helpful tips, and
+                exclusive offers.
+            </p>
+            <form action="#">
+                <input type="email" placeholder="Your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<button class="scroll-button">
+    <img src="{{ url_for('static', filename='images/scroll-icon-png-1.jpg') }}" alt="Image">
+</button>
+
+<!-- copyright -->
+<div class="copyright">
+    &copy; <span id="year"></span> by <span>Anshika</span> | All Rights Reserved
+</div>
+
+<!-- Toaster -->
+<div id="toast-container" class="toast-container"></div>
+
+<!-- script files -->
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- end -->
+<!-- <script src="script/script.js"></script> --> 
+
+<!-- new link of static folder  -->
+<script src="{{ url_for('static', filename='script/preloading.js') }}"></script>
+<script src="{{ url_for('static', filename='script/avtar.js') }}"></script>
+<script src="{{ url_for('static', filename='script/contact.js') }}"></script>
+<script src="{{ url_for('static', filename='script/nav.js') }}"></script>
+<script src="{{ url_for('static', filename='script/cart.js') }}"></script>
+<script src="{{ url_for('static', filename='script/login.js') }}"></script>
+<script src="{{ url_for('static', filename='script/product_database.js') }}"></script>
+<script src="{{ url_for('static', filename='script/products.js') }}"></script>
+<script src="{{ url_for('static', filename='script/signup.js') }}"></script>
+<script src="{{ url_for('static', filename='script/FAQ.js') }}"></script>
+<script src="{{ url_for('static', filename='script/topscrollindicator.js') }}"></script>
+<script src="{{ url_for('static', filename='script/popup.js') }}"></script>
+<script src="{{ url_for('static', filename='script/flavor_section.js') }}"></script>
+<script src="{{ url_for('static', filename='script/cursor.js') }}"></script>
+<script src="//code.tidio.co/wqct6ziuqgn7jxbmpbahi20mfimnmtlq.js" async></script>
+
+</body>
+</html>
+
+</body>

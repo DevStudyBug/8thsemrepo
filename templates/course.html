@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Portal - Courses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+     <!-- Bootstrap CSS -->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+ <!-- custom style sheets -->
+
+ <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+ <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}">
+ <link rel="stylesheet" href="{{ url_for('static', filename='styles/login-signup.css') }}">
+ <link rel="stylesheet" href="{{ url_for('static', filename='styles/products.css') }}">
+ <link rel="stylesheet" href="{{ url_for('static', filename='styles/topscrollindicator.css') }}">
+ <link rel="stylesheet" href="{{ url_for('static', filename='styles/subscriptions.css') }}">
+ <link rel="stylesheet" href="{{ url_for('static', filename='styles/dine-in.css')}}">
+ <link rel="stylesheet" href="{{ url_for('static', filename='styles/faq.css')}}">
+ <link rel="stylesheet" href="{{ url_for('static', filename='styles/gallery.css') }}">
+ <link rel="stylesheet" href="{{ url_for('static', filename='styles/learn.css') }}">
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+ <!-- img -->
+ <!-- <link rel="icon" src="{{ url_for('static', filename='images/iconscout.png') }}" type="image/png"> -->
+ <!-- font awesome icons script -->
+ <script src="https://kit.fontawesome.com/c732ec9339.js" crossorigin="anonymous"></script>
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            color: #1c1d1f;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 19px;
+            color: #6a6f73;
+        }
+
+        /* Topic Navigation */
+        .topic-nav {
+            border-bottom: 1px solid #d1d7dc;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding-bottom: 10px;
+        }
+
+        .topic-nav button {
+            padding: 12px 16px;
+            margin-right: 8px;
+            border: none;
+            background: none;
+            color: #6a6f73;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .topic-nav button.active {
+            color: #1c1d1f;
+        }
+
+        .topic-nav button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #1c1d1f;
+        }
+
+        /* Topic Circles */
+        .topic-circles {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+
+        .topic-circle {
+            min-width: 180px;
+            text-align: center;
+            padding: 15px;
+            background-color: #f7f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .topic-circle:hover {
+            background-color: #f0f2f3;
+        }
+
+        .topic-circle h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .topic-circle p {
+            font-size: 14px;
+            color: #6a6f73;
+        }
+
+        /* Course Cards Grid */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .course-card {
+            border: 1px solid #d1d7dc;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .course-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .course-content {
+            padding: 15px;
+        }
+
+        .course-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #1c1d1f;
+        }
+
+        .course-instructor {
+            font-size: 13px;
+            color: #6a6f73;
+            margin-bottom: 8px;
+        }
+
+        .course-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 8px;
+        }
+
+        .rating-score {
+            color: #b4690e;
+            font-weight: bold;
+        }
+
+        .rating-count {
+            color: #6a6f73;
+            font-size: 13px;
+        }
+
+        .course-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .current-price {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .original-price {
+            color: #6a6f73;
+            text-decoration: line-through;
+            font-size: 14px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 3px;
+        }
+
+        .badge-premium {
+            background-color: #5624d0;
+            color: white;
+        }
+
+        .badge-bestseller {
+            background-color: #eceb98;
+            color: #3d3c0a;
+        }
+
+        /* Navigation Arrows */
+        .nav-arrows {
+            position: relative;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border: 1px solid #d1d7dc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+
+        .arrow-left {
+            left: -20px;
+        }
+
+        .arrow-right {
+            right: -20px;
+        }
+    </style>
+</head>
+<body>
+<!-- scroll progress -->
+<div class="scroll-progress"></div>
+<!-- nav bar -->
+<div class="nav-bar">
+ <div class="logo">
+     <img src="{{ url_for('static', filename='images/scrollpic.png') }}" alt="Image" height="40px" width="40px">
+     <!-- <img src="images/iconscout.png" alt="recruitment" height="40px" width="40px"> -->
+     <a href="index.html">RecruitEase</a>
+ </div>
+ <div class="nav-links">
+     <a href="/index" class="link active">home</a>
+     <a class="nav-link" href="/job"><i class="bi bi-briefcase"></i> Recruitment</a>
+     <a class="nav-link" href="/ana"><i class="bi bi-bar-chart"></i> Dashboard</a>
+     <a class="nav-link" href="https://recruitease.streamlit.app/"><i class="bi bi-line"></i> Resume Score</a>
+     <!-- <a href="nav-links" class="/products"><i class="bi bi-bar-box"></i>Products</a> -->
+     <a href="/products" class="nav-links"><i class="bi bi-box"></i>Products</a>
+     <a class="nav-link" href="/feedback"><i class="bi bi-chat-dots"></i> Feedback</a>
+ </div>
+ <div class="icons">
+     <div class="icon">
+         <a href="./login.html"><i class="fa fa-user" aria-hidden="true"></i></a>
+     </div>
+     <div class="icon">
+         <span class="i"><i class="fa fa-shopping-cart cart-icon" aria-hidden="true"></i> <span
+                 class="no-of-cart-items">0</span></span>
+     </div>
+     <div class="icon">
+         <i class="fa fa-bars menu" aria-hidden="true" id="menu-icon"></i>
+     </div>
+ </div>
+</div>
+
+    <div class="container">
+        <div class="header">
+            <h1>All the skills you need in one place</h1>
+            <p>From critical skills to technical topics, we support your professional development.</p>
+        </div>
+
+        <nav class="topic-nav">
+            <button class="active">Data Science</button>
+            <button>IT Certifications</button>
+            <button>Leadership</button>
+            <button>Web Development</button>
+            <button>Communication</button>
+            <button>Business Analytics & Intelligence</button>
+        </nav>
+
+        <div class="nav-arrows">
+            <div class="topic-circles">
+                <div class="topic-circle">
+                    <h3>ChatGPT</h3>
+                    <p>4M+ learners</p>
+                </div>
+                <div class="topic-circle">
+                    <h3>Data Science</h3>
+                    <p>7M+ learners</p>
+                </div>
+                <div class="topic-circle">
+                    <h3>Python</h3>
+                    <p>477M+ learners</p>
+                </div>
+                <div class="topic-circle">
+                    <h3>Machine Learning</h3>
+                    <p>8M+ learners</p>
+                </div>
+                <div class="topic-circle">
+                    <h3>Artificial Intelligence</h3>
+                    <p>10M+ learners</p>
+                </div>
+                <!-- Add more topic circles as needed -->
+            </div>
+            <button class="arrow arrow-left">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="arrow arrow-right">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <div class="course-grid">
+            <div class="course-card">
+                <img src="{{ url_for('static', filename='images/reveiwer5.jpg') }}" alt="Image" class="course-image">
+                <div class="course-content">
+                    <h2 class="course-title">ChatGPT Complete Guide: Learn Generative AI, ChatGPT & More</h2>
+                    <p class="course-instructor">Julian Melanson, Benza Maman</p>
+                    <div class="course-rating">
+                        <span class="rating-score">4.5</span>
+                        <span class="rating-stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-count">(43,931)</span>
+                    </div>
+                    <div class="course-price">
+                        <span class="current-price">₹499</span>
+                        <span class="original-price">₹2,699</span>
+                    </div>
+                    <span class="badge badge-premium">Premium</span>
+                    <span class="badge badge-bestseller">Bestseller</span>
+                </div>
+            </div>
+            <!-- Add more course cards as needed -->
+        </div>
+    </div>
+
+    <script>
+        // Add scroll functionality for topic circles
+        const arrowLeft = document.querySelector('.arrow-left');
+        const arrowRight = document.querySelector('.arrow-right');
+        const topicCircles = document.querySelector('.topic-circles');
+
+        arrowLeft.addEventListener('click', () => {
+            topicCircles.scrollBy({
+                left: -200,
+                behavior: 'smooth'
+            });
+        });
+
+        arrowRight.addEventListener('click', () => {
+            topicCircles.scrollBy({
+                left: 200,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

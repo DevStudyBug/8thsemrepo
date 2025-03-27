@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RecruitEase - Job Fair 2025</title>
+     <!-- Bootstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+     <!-- custom style sheets -->
+     <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+     <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}">
+     <link rel="stylesheet" href="{{ url_for('static', filename='styles/products.css') }}">
+     <link rel="stylesheet" href="{{ url_for('static', filename='styles/login-signup.css') }}">
+     <link rel="stylesheet" href="{{ url_for('static', filename='styles/topscrollindicator.css') }}">
+     <link rel="stylesheet" href="{{ url_for('static', filename='styles/subscriptions.css') }}">
+     <link rel="stylesheet" href="{{ url_for('static', filename='styles/dine-in.css')}}">
+     <link rel="stylesheet" href="{{ url_for('static', filename='styles/faq.css')}}">
+     <link rel="stylesheet" href="{{ url_for('static', filename='styles/gallery.css') }}">
+     <script src="https://kit.fontawesome.com/c732ec9339.js" crossorigin="anonymous"></script>
+    <style>
+        /* * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }*/
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+            background: linear-gradient(to top, var(--body-color), #f9cbe0);
+        } 
+        .container {
+            width: 100%;
+            max-width: 600px;
+            /* max-height:00px; */
+            margin-top: 120px;
+            margin-bottom:100px;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .login-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #D91656;
+     
+            border-radius: 4px;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: rgb(0, 0, 0);
+            border: 1px solid #D91656;
+            /* border: none; */
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .rating-stars {
+            text-align: center;
+            font-size: 36px;
+            color: #ddd;
+            margin: 20px 0;
+        }
+        .rating-stars .star {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .rating-stars .star.active {
+            color: gold;
+        }
+        .switch-login {
+            text-align: center;
+            margin-top: 15px;
+        }
+        #interview-invite, #interview-question, #interview-complete {
+            display: none;
+        }
+        .question-container {
+            text-align: center;
+        }
+        .option-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #D91656;
+            background-color: rgba(247, 247, 247, 0.945);
+            color: rgb(0, 0, 0);
+            cursor: pointer;
+        }
+        .option-btn.selected {
+            background-color: #4CAF50;
+            color: rgb(0, 0, 0);
+        }
+
+    </style>
+</head>
+<body>
+    <!-- cursor -->
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <!-- nav bar -->
+  <div class="nav-bar">
+      <div class="logo">
+          <img src="{{ url_for('static', filename='images/scrollpic.png') }}" alt="Image" height="40px" width="40px">
+          <!-- <img src="images/iconscout.png" alt="recruitment" height="40px" width="40px"> -->
+          <a href="index.html">RecruitEase</a>
+      </div>
+      <div class="nav-links">
+          <a href="/index" class="link active">Home</a>
+          <!-- <a class="nav-link" href="job.html"><i class="bi bi-briefcase"></i> Recruitment</a> -->
+          <a class="nav-link" href="/job"><i class="bi bi-briefcase"></i> Recruitment</a>
+          <a class="nav-link" href="/ana"><i class="bi bi-bar-chart"></i> Dashboard</a>
+          <a class="nav-link" href="https://recruitease.streamlit.app/"><i class="bi bi-line"></i> Resume Score</a>
+         
+          <a href="/products" class="nav-links"><i class="bi bi-box"></i>Products</a>
+          <a href="/jobfair" class="nav-links"><i class="bi bi- "></i>Job Fair</a>
+          <a class="nav-link" href="/feedback"><i class="bi bi-chat-dots"></i> Feedback</a>
+          <!-- <a href="/products" class="link">products</a> -->
+          <!-- <a href="./delivery.html" class="link">Delivery</a> -->
+          <!-- <a href="./dine-in.html" class="link">Dine In</a> -->
+          <!-- <a href="./catering.html" class="link">Catering</a> -->
+      </div>
+      <div class="icons">
+          <div class="icon">
+              <a href="/login"><i class="fa fa-user" aria-hidden="true"></i></a>
+          </div>
+          <div class="icon">
+              <span class="i"><i class="fa fa-shopping-cart cart-icon" aria-hidden="true"></i> <span
+                      class="no-of-cart-items">0</span></span>
+          </div>
+          <div class="icon">
+              <i class="fa fa-bars menu" aria-hidden="true" id="menu-icon"></i>
+          </div>
+      </div>
+  </div>
+
+  <!-- Cart -->
+  <div class="cart">
+      <i class="fa fa-times close-cart" aria-hidden="true"></i>
+      <h1>Your Cart</h1>
+
+      <div class="no-empty-cart">
+          <ul class="cart-list-items">
+          </ul>
+          <div>
+              <div class="total">Sub Total: <span class="sub-total">$0</span></div>
+              <button>Check out</button>
+          </div>
+
+      </div>
+
+      <div class="empty-cart active">
+          <p>No items in the cart!</p>
+      </div>
+  </div>
+
+  <div id="login" class="container">
+    <div class="login-header">
+        <h2>Sign in as User</h2>
+    </div>
+    <form id="user-login-form">
+        <div class="input-group">
+            <input type="email" placeholder="Email address" required>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="terms" required>
+            <label for="terms">I agree to the privacy policy and terms of use</label>
+        </div>
+        <button type="submit" class="btn">LOG IN</button>
+    </form>
+    <div class="switch-login">
+        <a href="#" id="switch-to-admin">Sign in as Admin</a>
+    </div>
+</div>
+
+<div id="interview-invite" class="container">
+    <h1>RecruitEase Job Fair Assessment 2025</h1>
+    <div class="interview-card">
+        <h2>Engineering</h2>
+        <p>Thane, Maharashtra - India, Full Time, 0-2 years</p>
+        <p>Notes: Please take the test before deadline 12:00 AM</p>
+        <button id="start-interview" class="btn">Start Interview</button>
+    </div>
+</div>
+
+<div id="interview-question" class="container">
+    <div class="question-container">
+        <h2 id="question-number">Question 1/20</h2>
+        <p id="question-text"></p>
+        <div id="options-container"></div>
+        <button id="next-question" class="btn" style="display:none;">Next Question</button>
+    </div>
+</div>
+
+<div id="interview-complete" class="container">
+    <h2>Interview Complete!</h2>
+    <p>Thank you for your time. Your responses have been uploaded.</p>
+    <div class="feedback">
+        <p>How would you rate your interview experience?</p>
+        <div class="rating-stars">
+            <span class="star" data-rating="1">★</span>
+            <span class="star" data-rating="2">★</span>
+            <span class="star" data-rating="3">★</span>
+            <span class="star" data-rating="4">★</span>
+            <span class="star" data-rating="5">★</span>
+        </div>
+       
+        <button id="submit-rating" class="btn">Submit Rating</button>
+    
+    <div class="actions">
+        <button id="return-dashboard" class="btn">Return to Dashboard</button>
+        <button id="logout" class="btn">Logout</button>
+    </div>
+</div>
+
+</div>
+
+ <!-- footer -->
+ <section class="footer">
+    <div class="footer-row">
+        <div class="footer-col">
+            <h4>Useful links</h4>
+            <ul class="links">
+
+                <li><a href="#home">Home</a></li>
+                <!-- <li><a href="#"><i class="fas fa-user"></i> My Account</a></li> -->
+                <li><a href="./products.html">Products</a></li>
+                <!-- <li><a href="./gallary.html">Gallery</a></li> -->
+                <li><a href="#about">About Us</a></li>
+                <li><a href="./faq.html" class="link"> FAQ</a></li>
+                <!-- <li><a href="contributor.html"> Our Contributors</a></li> -->
+                <!-- <li><a href="blogs.html"> Our Blogs</a></li> -->
+                <!-- <li><a href="#"><i class="fas fa-file-contract"></i> Customer Agreement</a></li> -->
+                <li><a href="./privacy.html"> Privacy Policy</a></li>
+                <li><a href="./terms&condition.html">Terms&Condition</a></li> 
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Opening Hours</h4>
+            <ul class="links">
+                <li><a href="#">Mon-Sat : 9.00 AM to 9.30 PM</a></li>
+                <li><a href="#">Sunday : 9.00 AM to 3.00 PM</a></li>
+            </ul>
+            <h4 style="margin-top: 15px;">Locations</h4>
+            <ul class="links">
+                <li class="address1"><a href="" class="social"><i class="fa-solid fa-location-dot"></i> Mumbai, Maharastra</a></li>
+                <li class="address2"><a href="" class="social"><i class="fa-solid fa-location-dot"></i>Navi Mumbai,Thane </a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Need Help?</h4>
+            <ul class="links">
+                <li><a href="tel:90904500112" class="social"><i class="fa-solid fa-phone"></i> +91 8591245402</a>
+                </li>
+                <li><a href="tel:90904500112" class="social"><i class="fa-solid fa-phone"></i> +91 8591245402</a>
+                </li>
+                <li><a href="mailto:mail@1234567.com" class="social"><i class="fa-solid fa-envelope"></i>
+                        anshikadubey8591@gmail.com</a></li>
+            </ul>
+            <h4 style="margin-top: 15px;">Follow Us</h4>
+            <ul class="links">
+                <li><a href="https://www.facebook.com/" class="social"><i class="fa-brands fa-facebook-f"></i>
+                        Facebook</a></li>
+                <li><a href="https://www.instagram.com/" class="social"><i class="fa-brands fa-instagram"></i>
+                        Instagram</a></li>
+                <li><a href="https://www.linkedin.com/" class="social"><i class="fa-brands fa-linkedin-in"></i>
+                        Linkedin</a></li>
+                <li><a href="https://www.twitter.com/" class="social"><i class="fa-brands fa-x-twitter"></i>
+                        Twitter</a></li>
+                <li><a href="#1" class="social"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a></li>
+                <!-- It's href is #1 for css purpose to get it's hover green  -->
+
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Newsletter</h4>
+            <p>
+                Subscribe to our newsletter for a weekly dose
+                of news, updates, helpful tips, and
+                exclusive offers.
+            </p>
+            <form action="#">
+                <input type="email" placeholder="Your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<button class="scroll-button">
+    <img src="{{ url_for('static', filename='images/scrollpic.png') }}" alt="Image">
+</button>
+
+<!-- copyright -->
+<div class="copyright">
+    &copy; <span id="year"></span> by <span>Anshika</span> | All Rights Reserved
+</div>
+
+<!-- Toaster -->
+<div id="toast-container" class="toast-container"></div>
+
+<!-- script files -->
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- end -->
+<!-- <script src="script/script.js"></script> --> 
+
+<!-- new link of static folder  -->
+<script src="{{ url_for('static', filename='script/contact.js') }}"></script>
+<script src="{{ url_for('static', filename='script/nav.js') }}"></script>
+<script src="{{ url_for('static', filename='script/cart.js') }}"></script>
+<script src="{{ url_for('static', filename='script/login.js') }}"></script>
+<script src="{{ url_for('static', filename='script/product_database.js') }}"></script>
+<script src="{{ url_for('static', filename='script/products.js') }}"></script>
+<script src="{{ url_for('static', filename='script/signup.js') }}"></script>
+<script src="{{ url_for('static', filename='script/FAQ.js') }}"></script>
+<script src="{{ url_for('static', filename='script/topscrollindicator.js') }}"></script>
+<script src="{{ url_for('static', filename='script/popup.js') }}"></script>
+<script src="{{ url_for('static', filename='script/flavor_section.js') }}"></script>
+<script src="{{ url_for('static', filename='script/cursor.js') }}"></script>
+<script>
+    const questions = [
+        {
+            text: "If a train 150m long is moving at a speed of 54 km/hr, how long will it take to pass a pole?",
+            options: [
+                { text: "8 sec", correct: false },
+                { text: "10 sec", correct: false },
+                { text: "15 sec", correct: false },
+                { text: "12 sec", correct: true }
+            ]
+        },
+        // Add more questions here...
+        {
+                text: "What is the time complexity of Quick Sort?",
+                options: [
+                    { text: "O(n)", correct: false },
+                    { text: "O(n log n)", correct: true },
+                    { text: "O(n²)", correct: false },
+                    { text: "O(log n)", correct: false }
+                ]
+            },
+    ];
+
+    let currentQuestionIndex = 0;
+
+    const loginPage = document.getElementById('login');
+    const interviewInvitePage = document.getElementById('interview-invite');
+    const interviewQuestionPage = document.getElementById('interview-question');
+    const interviewCompletePage = document.getElementById('interview-complete');
+
+    const userLoginForm = document.getElementById('user-login-form');
+    const switchToAdminLink = document.getElementById('switch-to-admin');
+    const startInterviewBtn = document.getElementById('start-interview');
+    const questionText = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options-container');
+    const nextQuestionBtn = document.getElementById('next-question');
+    const questionNumberDisplay = document.getElementById('question-number');
+    const returnDashboardBtn = document.getElementById('return-dashboard');
+    const logoutBtn = document.getElementById('logout');
+
+    userLoginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        loginPage.style.display = 'none';
+        interviewInvitePage.style.display = 'block';
+    });
+
+    startInterviewBtn.addEventListener('click', startInterview);
+    nextQuestionBtn.addEventListener('click', moveToNextQuestion);
+
+    function startInterview() {
+        interviewInvitePage.style.display = 'none';
+        interviewQuestionPage.style.display = 'block';
+        loadQuestion(0);
+    }
+
+    function loadQuestion(index) {
+        const question = questions[index];
+        questionText.textContent = question.text;
+        questionNumberDisplay.textContent = `Question ${index + 1}/${questions.length}`;
+        
+        optionsContainer.innerHTML = '';
+        question.options.forEach((option, optionIndex) => {
+            const optionBtn = document.createElement('button');
+            optionBtn.textContent = option.text;
+            optionBtn.classList.add('option-btn');
+            optionBtn.addEventListener('click', () => selectOption(optionBtn, option.correct));
+            optionsContainer.appendChild(optionBtn);
+        });
+    }
+
+    function selectOption(selectedButton, isCorrect) {
+        const optionButtons = document.querySelectorAll('.option-btn');
+        optionButtons.forEach(btn => btn.classList.remove('selected'));
+        selectedButton.classList.add('selected');
+        nextQuestionBtn.style.display = 'block';
+    }
+
+    function moveToNextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+            loadQuestion(currentQuestionIndex);
+            nextQuestionBtn.style.display = 'none';
+        } else {
+            interviewQuestionPage.style.display = 'none';
+            interviewCompletePage.style.display = 'block';
+        }
+    }
+     // Rating System
+     const stars = document.querySelectorAll('.star');
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const rating = parseInt(star.getAttribute('data-rating'));
+                stars.forEach(s => s.classList.remove('active'));
+                
+                for (let i = 0; i < rating; i++) {
+                    stars[i].classList.add('active');
+                }
+                
+                state.rating = rating;
+            });
+        });
+
+        // Submit Rating
+        document.getElementById('submit-rating').addEventListener('click', () => {
+            if (state.rating > 0) {
+                alert(`Thank you for rating ${state.rating} stars!`);
+            } else {
+                alert('Please select a rating before submitting.');
+                return;
+            }
+        });
+
+
+    returnDashboardBtn.addEventListener('click', () => {
+        interviewCompletePage.style.display = 'none';
+        interviewInvitePage.style.display = 'block';
+    });
+
+    logoutBtn.addEventListener('click', () => {
+        interviewCompletePage.style.display = 'none';
+        loginPage.style.display = 'block';
+    });
+</script>
+
+
+</body>
+</html>

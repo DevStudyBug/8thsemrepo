@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecruitEase LOGIN</title>
+       <!-- Bootstrap CSS -->
+       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+       <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+       <!-- custom style sheets -->
+       <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+       <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}">
+       <link rel="stylesheet" href="{{ url_for('static', filename='styles/products.css') }}">
+       <link rel="stylesheet" href="{{ url_for('static', filename='styles/login-signup.css') }}">
+       <link rel="stylesheet" href="{{ url_for('static', filename='styles/topscrollindicator.css') }}">
+       <link rel="stylesheet" href="{{ url_for('static', filename='styles/subscriptions.css') }}">
+       <link rel="stylesheet" href="{{ url_for('static', filename='styles/dine-in.css')}}">
+       <link rel="stylesheet" href="{{ url_for('static', filename='styles/faq.css')}}">
+       <link rel="stylesheet" href="{{ url_for('static', filename='styles/gallery.css') }}">
+       
+       <!-- img -->
+       <!-- <link rel="icon" src="{{ url_for('static', filename='images/iconscout.png') }}" type="image/png"> -->
+       <!-- font awesome icons script -->
+       <script src="https://kit.fontawesome.com/c732ec9339.js" crossorigin="anonymous"></script>
+   </head>
+
+<body>
+    <!-- cursor -->
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+
+
+    <!-- scroll progress -->
+    <div class="scroll-progress"></div>
+  <!-- nav bar -->
+  <div class="nav-bar">
+    <div class="logo">
+        <img src="{{ url_for('static', filename='images/recuLogo.jpg')  }}" alt="Image" height="40px" width="40px">
+        <!-- <img src="images/iconscout.png" alt="recruitment" height="40px" width="40px"> -->
+        <a href="/index">RecruitEase</a>
+    </div>
+    <div class="nav-links">
+        <!-- <a href="/index" class="link active">home</a> -->
+        <!-- <a class="nav-link" href="job.html"><i class="bi bi-briefcase"></i> Recruitment</a> -->
+        <!-- <a class="nav-link" href="/job"><i class="bi bi-briefcase"></i> Recruitment</a> -->
+        <!-- <a class="nav-link" href="/ana"><i class="bi bi-bar-chart"></i> Dashboard</a> -->
+        <!-- <a class="nav-link" href="https://recruitease.streamlit.app/"><i class="bi bi-line"></i> Resume Score</a> -->
+        <!-- <a href="nav-links" class="/products"><i class="bi bi-bar-box"></i>Products</a> -->
+        <!-- <a href="/products" class="nav-links"><i class="bi bi-box"></i>Products</a> -->
+        <!-- <a href="https://hrchatbot.netlify.app/" class="nav-links"><i class="bi bi-box"></i>ChatBot</a> -->
+
+    </div>
+    <div class="icons">
+        <div class="icon">
+           
+            <a href="/signup"><i class="fa fa-user" aria-hidden="true"></i>Sign Up </a>
+        </div>
+        
+        <div class="icon">
+            <i class="fa fa-bars menu" aria-hidden="true" id="menu-icon"></i>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- main -->
+    <a href="/index">
+
+        <div id="logo">
+            <img src="{{ url_for('static', filename='images/recuLogo.jpg')  }}" alt="Image" height="80px" width="80px">
+
+        </div>
+    </a>
+
+    <h1 style="margin-bottom: 10px;">Login to RecruitEase</h1>
+    <form>
+        <div class="input-fields">
+            <!-- <div class="input-field-header">Email</div> -->
+            <input type="email" class="input-field" placeholder="Email" required>
+        </div>
+
+        <div class="input-fields">
+            <!-- <div class="input-field-header">Password</div> -->
+            <div class="password-container">
+                <input type="password" class="input-field" id="password-input-field" placeholder="Password" required>
+                <i style="margin-top: 5px;" class="fa-solid fa-eye-slash" id="toggle-password"></i>
+            </div>
+
+        </div>
+        <div class="check-container">
+            <div class="check-button">
+                <input type="checkbox">
+                <span>Remember me</span>
+            </div>
+            <div class="forget-button">
+                <a href="#" style="color: var(--main-color);">Forgot your password?</a>
+            </div>
+        </div>
+        <div class="signin-btn">
+            <button>Sign in</button>
+        </div>
+    </form>
+
+    <div id="line-container">
+        <br>
+        <span>Don't have an account?</span><a href="/signup" class="register-now-link">Create account</a>
+    </div>
+    <div class="sep-container">
+        <div class="sep-line"></div>
+        <div>
+            <p>or</p>
+        </div>
+        <div class="sep-line"></div>
+    </div>
+    <div class="social-link-2">
+      
+        <a href=""><img src="{{ url_for('static', filename='images/social-icons/google.png') }}" alt="Discount Image"height="25px"width="25px"></a>
+        <a href=""> <img src="{{ url_for('static', filename='images/social-icons/Facebook.svg') }}" alt="Discount Image"height="25px" width="25px"></a>
+    </div>
+
+    <!-- new link of static folder  -->
+    <script src="{{ url_for('static', filename='script/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='script/contact.js') }}"></script>
+    <script src="{{ url_for('static', filename='script/nav.js') }}"></script>
+    <script src="{{ url_for('static', filename='script/cart.js') }}"></script>
+    <script src="{{ url_for('static', filename='script/FAQ.js') }}"></script>
+    <script src="{{ url_for('static', filename='script/topscrollindicator.js') }}"></script>
+    <script src="{{ url_for('static', filename='script/popup.js') }}"></script>
+    <script src="{{ url_for('static', filename='script/flavor_section.js') }}"></script>
+    <script src="{{ url_for('static', filename='script/cursor.js') }}"></script>
+    <script src="{{ url_for('static', filename='script/products.js') }}"></script>
+    <!-- src="{{ url_for('static', filename='script/products.js') }}" -->
+    <script src="//code.tidio.co/wqct6ziuqgn7jxbmpbahi20mfimnmtlq.js" async></script>
+    <!-- Just before </body> tag -->
+<script type="module">
+    // Firebase App (the core Firebase SDK) is always required and must be listed first
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-analytics.js";
+    
+    // Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyB7a_ojwVcpVCWDdHA__AFzClDE3eaynjs",
+        authDomain: "recruitease-de165.firebaseapp.com",
+        projectId: "recruitease-de165",
+        storageBucket: "recruitease-de165.firebasestorage.app",
+        messagingSenderId: "303080414917",
+        appId: "1:303080414917:web:fe67e94b66ae3d21851aac",
+        measurementId: "G-0G44EFZW7M"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+</script>
+
+<!-- Ensure this is a module script -->
+<script type="module" src="{{ url_for('static', filename='script/login.js') }}"></script>
+
+</body>
+
+</html>
